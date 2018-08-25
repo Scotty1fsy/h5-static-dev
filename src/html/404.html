@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+@@include('tpl/header.htm', {"title": "404", "pageCssPath": ["404"], "baseHref": "../"})
+
+<body>
+  <div class="container">
+    <!-- 定义页面内容区域 start  -->
+    <div class="not-found-info">页面已失联，听说去寻找诗和远方去啦！</div>
+    <img src="image/404.png" class="not-found-img" alt="404图片">
+    <div class="btns">
+      <a href="#" class="btn-link btn-link-back" onclick="return false">返回上一页</a>
+      <a href="html/index.html" class="btn-link">返回首页</a>
+    </div>
+    <!-- 定义页面内容区域 end  -->
+  </div>
+
+  @@include('tpl/footer.htm', {"pageJsPath": ["404"]})
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.not-found-info {
+  font-size: .36rem;
+  color: #3eb3a1;
+}
+
+.not-found-img {
+  height: 2.4rem;
+  margin-top: 1rem;
+  margin-bottom: .8rem;
+}
+
+.btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .btn-link {
+    font-size: .32rem;
+    color: #ec873b;
+    padding: .1rem .5rem;
+  }
+}

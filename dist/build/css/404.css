@@ -1,0 +1,41 @@
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100vh; }
+
+.not-found-info {
+  font-size: .36rem;
+  color: #3eb3a1; }
+
+.not-found-img {
+  height: 2.4rem;
+  margin-top: 1rem;
+  margin-bottom: .8rem; }
+
+.btns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center; }
+  .btns .btn-link {
+    font-size: .32rem;
+    color: #ec873b;
+    padding: .1rem .5rem; }
+
+/*# sourceMappingURL=maps/404.css.map */
