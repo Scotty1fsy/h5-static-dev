@@ -1,3 +1,6 @@
+@import "util/border",
+"util/iconfont",
+"util/nowrap";
 html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -41,26 +44,17 @@ a {
   clear: both;
 }
 
-.ui-nowrap {
-  display: -webkit-box;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
-}
-
-.ui-nowrap-multi {
-  display: -webkit-box;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-}
-
 .hover-layer:active {
   box-shadow: 0 0 0 1000px rgba(0, 0, 0, .1) inset;
 }
 
 .container {
   background-color: #ffffff;
+}
+
+.header-wrap {
+  .header-bar {}
+  .menu {
+    .menu-text {}
+  }
 }

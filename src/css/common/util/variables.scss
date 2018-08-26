@@ -1,0 +1,11 @@
+//border
+//----------------------------------------
+$bordercolor: #e9e9e9;
+$border-t: -webkit-gradient(linear, left bottom, left top, color-stop(.5, rgba(0, 0, 0, 0)), color-stop(.5, $bordercolor));
+$border-b: -webkit-gradient(linear, left top, left bottom, color-stop(.5, rgba(0, 0, 0, 0)), color-stop(.5, $bordercolor));
+$border-l: -webkit-gradient(linear, right top, left top, color-stop(.5, rgba(0, 0, 0, 0)), color-stop(.5, $bordercolor));
+$border-r: -webkit-gradient(linear, left top, right top, color-stop(.5, rgba(0, 0, 0, 0)), color-stop(.5, $bordercolor));
+$border-radius-base: 4px;
+$border-radius-lg: 8px;
+$border-radius-max: 200px;
+$z-index-border: 100;
