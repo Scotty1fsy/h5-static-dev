@@ -2,11 +2,16 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
+  <meta name="site" content="http://www.sule.com" />
+  <meta name="title" content="素乐移动官网" />
+  <meta name="keywords" content="素乐，素乐移动官网，素乐产品中心，素乐研究所，素乐情报科" />
+  <meta name="description" content="素乐移动官网，简素乐活-素简之道，乐活人生" />
   <title>产品</title>
   <base href="../../" />
   <link rel="shortcut icon" href="favicon.ico" />
-  <link rel="stylesheet" href="css/common/common.css" />  <link rel="stylesheet" href="css/pages/products.css" /> 
-
+  <link rel="stylesheet" href="css/common/common.css" />
+  <link rel="stylesheet" href="css/plugins/social-share.css" />
+   <link rel="stylesheet" href="css/pages/products.css" /> 
   <script src="js/libs/adaptive.js"></script>
 </head>
 
@@ -18,62 +23,221 @@
 </style>
 
 <body>
-  <div class="iframe-content-container">
-    <!-- 定义页面内容区域 start  -->
-    <div class="search-wrap">
-      <form class="b-form form-inline">
-        <div class="form-group">
-          <label for="user" class="control-label key-word">关键字</label>
-          <div class="form-item">
-            <input autocomplete="off" placeholder="请输名称" size="sm" type="text" class="form-control input-sm">
+  <div class="container">
+    <div class="header-wrap">
+  <div class="header-bar ui-border-b">
+    <image class="sule-logo" src="image/1-01.png" alt="SOLOVE"></image>
+    <div class="menu-btn hover-layer">
+      <i class="iconfont icon-list"></i>
+    </div>
+  </div>
+  <div class="menu">
+    <ul>
+      <li>
+        <a class="hover-layer" href="html/pages/products.html">
+          <div class="menu-text">产品中心</div>
+          <div class="menu-text">Products</div>
+        </a>
+      </li>
+      <li>
+        <a class="hover-layer" href="html/pages/solove-institution.html">
+          <div class="menu-text">素乐研究所</div>
+          <div class="menu-text">Solove Institution</div>
+        </a>
+      </li>
+      <li>
+        <a class="hover-layer" href="html/pages/solove-cib.html">
+          <div class="menu-text">素乐情报科</div>
+          <div class="menu-text">Solove CIB</div>
+        </a>
+      </li>
+      <li>
+        <a class="hover-layer" href="html/pages/about-us.html">
+          <div class="menu-text">关于我们</div>
+          <div class="menu-text">About Us</div>
+        </a>
+      </li>
+      <li>
+        <a class="hover-layer" href="html/pages/cooperation.html">
+          <div class="menu-text">商业合作</div>
+          <div class="menu-text">Cooperation</div>
+        </a>
+      </li>
+      <li>
+        <a class="hover-layer ui-border-b search-link" href="html/pages/search.html">
+          <div class="menu-text search-text">
+            <i class="iconfont icon-search"></i>
+            <span>搜索</span>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+    <img src="../image/6-01.png" alt="产品中心图片">
+
+    <section class="classify-wrap">
+      <div class="current-classify ui-border-b hover-layer" data-value="0">
+        <span>所有分类</span>
+        <i class="iconfont icon-arrow-down"></i>
+      </div>
+      <ul>
+        <li class="ui-border-b hover-layer" data-value="0">所有分类</li>
+        <li class="ui-border-b hover-layer" data-value="1">数码配件</li>
+        <li class="ui-border-b hover-layer" data-value="2">家居产品</li>
+      </ul>
+    </section>
+
+    <section class="products-wrap">
+      <ul>
+        <li>
+          <a href="../html/pages/product-detail.html" class="product-info-link hover-layer">
+            <img src="../image/6-02.png" alt="产品小图片">
+            <h3>便携手持风扇 F1</h3>
+            <div class="ui-nowrap-two">方便携带\可充电\三档可调\持久续航</div>
+          </a>
+          <a href="http://zmnxbc.com/s/CRuQV?tm=f873c4" class="tmall-link hover-layer">
+            <i class="iconfont icon-buy"></i>
+            <span>购买</span>
+          </a>
+        </li>
+        <li>
+          <a href="../html/pages/product-detail.html" class="product-info-link hover-layer">
+            <img src="../image/6-03.png" alt="产品小图片">
+            <h3>便携手持风扇 N9</h3>
+            <div class="ui-nowrap-two">三档可调\大风力\持久续航\方便携带\可充电</div>
+          </a>
+          <a href="http://zmnxbc.com/s/CRuQV?tm=f873c4" class="tmall-link hover-layer">
+            <i class="iconfont icon-buy"></i>
+            <span>购买</span>
+          </a>
+        </li>
+        <li>
+          <a href="../html/pages/product-detail.html" class="product-info-link hover-layer">
+            <img src="../image/6-04.png" alt="产品小图片">
+            <h3>超薄便携移动充 X8</h3>
+            <div class="ui-nowrap-two">便携设计\双输入口\亲肤手感</div>
+          </a>
+          <a href="http://zmnxbc.com/s/CRuQV?tm=f873c4" class="tmall-link hover-layer">
+            <i class="iconfont icon-buy"></i>
+            <span>购买</span>
+          </a>
+        </li>
+        <li>
+          <a href="../html/pages/product-detail.html" class="product-info-link hover-layer">
+            <img src="../image/6-05.png" alt="产品小图片">
+            <h3>静音台式风扇 F2</h3>
+            <div class="ui-nowrap-two">三档可调大风力\持久续航\方便携带\可充电</div>
+          </a>
+          <a href="http://zmnxbc.com/s/CRuQV?tm=f873c4" class="tmall-link hover-layer">
+            <i class="iconfont icon-buy"></i>
+            <span>购买</span>
+          </a>
+        </li>
+        <li>
+          <a href="../html/pages/product-detail.html" class="product-info-link hover-layer">
+            <img src="../image/6-02.png" alt="产品小图片">
+            <h3>便携手持风扇 F1</h3>
+            <div class="ui-nowrap-two">方便携带\可充电\三档可调\持久续航</div>
+          </a>
+          <a href="http://zmnxbc.com/s/CRuQV?tm=f873c4" class="tmall-link hover-layer">
+            <i class="iconfont icon-buy"></i>
+            <span>购买</span>
+          </a>
+        </li>
+        <li>
+          <a href="../html/pages/product-detail.html" class="product-info-link hover-layer">
+            <img src="../image/6-03.png" alt="产品小图片">
+            <h3>便携手持风扇 N9</h3>
+            <div class="ui-nowrap-two">三档可调\大风力\持久续航\方便携带\可充电</div>
+          </a>
+          <a href="http://zmnxbc.com/s/CRuQV?tm=f873c4" class="tmall-link hover-layer">
+            <i class="iconfont icon-buy"></i>
+            <span>购买</span>
+          </a>
+        </li>
+        <li>
+          <a href="../html/pages/product-detail.html" class="product-info-link hover-layer">
+            <img src="../image/6-02.png" alt="产品小图片">
+            <h3>便携手持风扇 F1</h3>
+            <div class="ui-nowrap-two">方便携带\可充电\三档可调\持久续航</div>
+          </a>
+          <a href="http://zmnxbc.com/s/CRuQV?tm=f873c4" class="tmall-link hover-layer">
+            <i class="iconfont icon-buy"></i>
+            <span>购买</span>
+          </a>
+        </li>
+        <li>
+          <a href="../html/pages/product-detail.html" class="product-info-link hover-layer">
+            <img src="../image/6-03.png" alt="产品小图片">
+            <h3>便携手持风扇 N9</h3>
+            <div class="ui-nowrap-two">三档可调\大风力\持久续航\方便携带\可充电</div>
+          </a>
+          <a href="http://zmnxbc.com/s/CRuQV?tm=f873c4" class="tmall-link hover-layer">
+            <i class="iconfont icon-buy"></i>
+            <span>购买</span>
+          </a>
+        </li>
+        <li>
+          <a href="../html/pages/product-detail.html" class="product-info-link hover-layer">
+            <img src="../image/6-02.png" alt="产品小图片">
+            <h3>便携手持风扇 F1</h3>
+            <div class="ui-nowrap-two">方便携带\可充电\三档可调\持久续航</div>
+          </a>
+          <a href="http://zmnxbc.com/s/CRuQV?tm=f873c4" class="tmall-link hover-layer">
+            <i class="iconfont icon-buy"></i>
+            <span>购买</span>
+          </a>
+        </li>
+        <li>
+          <a href="../html/pages/product-detail.html" class="product-info-link hover-layer">
+            <img src="../image/6-03.png" alt="产品小图片">
+            <h3>便携手持风扇 N9</h3>
+            <div class="ui-nowrap-two">三档可调\大风力\持久续航\方便携带\可充电</div>
+          </a>
+          <a href="http://zmnxbc.com/s/CRuQV?tm=f873c4" class="tmall-link hover-layer">
+            <i class="iconfont icon-buy"></i>
+            <span>购买</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <button class="ui-btn-lg ui-btn-primary">
+      MORE
+      <i class="iconfont icon-arrow-down"></i>
+    </button>
+
+    <section class="page-footer ui-border-t">
+      <div class="footer-up">
+        <image class="sule-logo" src="image/1-01.png" alt="SOLOVE"></image>
+        <div class="company-info">
+          <div class="info-item">
+            <span>地 址</span>
+            <span>深圳市南山区蛇口网谷万海大厦C座602室</span>
+          </div>
+          <div class="info-item">
+            <span>电 话</span>
+            <span>400-690-9695</span>
           </div>
         </div>
-        <div class="form-group">
-          <div class="form-btns">
-            <button type="button" class="btn btn-primary btn-sm">检索</button>
-            <button type="button" class="btn btn-default btn-sm btn-reset">重置</button>
-          </div>
+        <div class="company-idea">
+          <h3>简素乐活-素简之道，乐活人生</h3>
+          <h3>SOLOVE - SIMPLE WAY, JOYFUL LIFE</h3>
         </div>
-      </form>
-    </div>
-    <div class="option-btns-wrap">
-      <button type="button" class="btn btn-primary btn-sm" id="depotAdd">
-        <i class="iconfont icon-xinzeng"></i>新增</button>
-    </div>
-    <div class="table-demo">
-      <table grid-manager="demoOne"></table>
-    </div>
-    <div tabindex="-1" id="formModal" role="dialog" class="modal fade" aria-hidden="true" aria-labelledby="formModalLabel">
-      <div role="document" class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" aria-label="close" class="btn close" data-dismiss="modal" aria-hidden="true">
-              <i aria-hidden="true" class="iconfont icon-close"></i>
-            </button>
-            <h4 class="modal-title" id="formModalLabel"></h4>
-          </div>
-          <div class="modal-body">
-            <form class="b-form form-horizontal" id="form-validator" action="/api/submitActivies">
-              <div class="form-group required has-feedback">
-                <label for="brand_name" class="control-label" style="width: 80px;">名称</label>
-                <div class="form-item" style="margin-left: 80px;">
-                  <input autocomplete="off" type="text" placeholder="手动录入" name="brandName" class="form-control" maxlength="5">
-                </div>
-              </div>
-              <div class="form-btns" style="width: 538px;">
-                <button type="submit" class="btn btn-primary btn-mw" data-type="saveAndAdd">保存并新增</button>
-                <button type="submit" class="btn btn-mw" data-type="save">保存</button>
-                <button type="button" class="btn btn-default btn-mw" data-dismiss="modal">取消</button>
-              </div>
-            </form>
-          </div>
+        <div class="share-wrap">
+          <a href="#" class="social-share-icon iconfont icon-wechat"></a>
+          <a href="#" class="social-share-icon iconfont icon-weibo"></a>
         </div>
       </div>
-    </div>
-    <!-- 定义页面内容区域 end  -->
+      <div class="company-copyright ui-border-t">Copyright ©️2018 Mecom Technology Co., Ltd</div>
+    </section>
   </div>
 
   <script src="js/libs/zepto.js"></script>
+<script src="js/plugins/alloy-finger.js"></script>
+<script src="js/plugins/social-share.js"></script>
 <script src="js/common/utils.js"></script>
 <script src="js/common/common.js"></script>
  <script src="js/pages/products.js">

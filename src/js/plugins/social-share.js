@@ -40,13 +40,8 @@
     description: description,
     image: image,
     imageSelector: undefined,
-
     weiboKey: '',
-
-    wechatQrcodeTitle: '微信扫一扫：分享',
-    wechatQrcodeHelper: '<p>微信里点“发现”，扫一下</p><p>二维码便可将本文分享至朋友圈。</p>',
-    wechatQrcodeSize: 100,
-
+    wechatQrcodeContent: '',
     sites: ['weibo', 'qq', 'wechat', 'douban', 'qzone', 'linkedin', 'facebook', 'twitter', 'google'],
     mobileSites: [],
     disabled: [],
@@ -135,7 +130,6 @@
       }
 
       link[0].href = url;
-
       if (name === 'wechat') {
         link[0].tabindex = -1;
       } else {
@@ -157,20 +151,19 @@
    */
   function createWechat(elem, data) {
     var wechat = getElementsByClassName(elem, 'icon-wechat', 'a');
-
     if (wechat.length === 0) {
       return false;
     }
 
-    var elems = createElementByString('<div class="wechat-qrcode"><h4>' + data.wechatQrcodeTitle + '</h4><div class="qrcode"></div><div class="help">' + data.wechatQrcodeHelper + '</div></div>');
-    var qrcode = getElementsByClassName(elems[0], 'qrcode', 'div');
+    var elems = createElementByString('<div class="wechat-qrcode-wrap">' + data.wechatQrcodeContent + '</div>');
+    // var qrcode = getElementsByClassName(elems[0], 'qrcode', 'div');
 
-    wechat[0].appendChild(elems[0]);
-    new QRCode(qrcode[0], {
-      text: data.url,
-      width: data.wechatQrcodeSize,
-      height: data.wechatQrcodeSize
-    });
+    // new QRCode(qrcode[0], {
+    //   text: data.url,
+    //   width: data.wechatQrcodeSize,
+    //   height: data.wechatQrcodeSize
+    // });
+    elem.appendChild(elems[0]);
   }
 
 
@@ -189,22 +182,24 @@
     var sites = (isMobileScreen ? data['mobileSites'] : data['sites']).slice(0);
     var disabled = data['disabled'];
 
-    if (typeof sites == 'string') {
+    if (typeof sites === 'string') {
       sites = sites.split(/\s*,\s*/);
     }
-    if (typeof disabled == 'string') {
+    if (typeof disabled === 'string') {
       disabled = disabled.split(/\s*,\s*/);
     }
 
-    if (runningInWeChat) {
-      disabled.push('wechat');
-    }
+    // if (runningInWeChat) {
+    //   disabled.push('wechat');
+    // }
 
     // Remove elements
     disabled.length && each(disabled, function (it) {
-      sites.splice(inArray(it, sites), 1);
+      var index = inArray(it, sites)
+      if (index !== -1) {
+        sites.splice(index, 1);
+      }
     });
-
     return sites;
   }
 
@@ -492,7 +487,8 @@
           function () {
             if (fn)
               if (i < 6 || ~document.readyState.indexOf('m')) fn(), fn = 0
-          }, !1
+          },
+          !1
         )
       })
   }

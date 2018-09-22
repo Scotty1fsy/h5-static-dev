@@ -1,5 +1,15 @@
 @import "./variables";
+
 /* 1px hack */
+.ui-border,
+.ui-border-radius,
+.ui-border-t,
+.ui-border-l,
+.ui-border-b,
+.ui-border-r,
+.ui-border-tb {
+  position: relative;
+}
 
 .ui-border-b:before {
   border-bottom: 1px solid $bordercolor;
@@ -10,9 +20,11 @@
   left: 0;
   bottom: 0;
   -webkit-transform-origin: left bottom;
+
   @media screen and (-webkit-min-device-pixel-ratio: 2) {
-    -webkit-transform:scaleY(.5);
+    -webkit-transform: scaleY(.5);
   }
+
   @media screen and (-webkit-min-device-pixel-ratio: 3) {
     -webkit-transform: scaleY(.3333);
   }
@@ -27,9 +39,11 @@
   left: 0;
   top: 0;
   -webkit-transform-origin: left top;
+
   @media screen and (-webkit-min-device-pixel-ratio: 2) {
-    -webkit-transform:scaleY(.5);
+    -webkit-transform: scaleY(.5);
   }
+
   @media screen and (-webkit-min-device-pixel-ratio: 3) {
     -webkit-transform: scaleY(.3333);
   }
@@ -44,9 +58,11 @@
   left: 0;
   top: 0;
   -webkit-transform-origin: left top;
+
   @media screen and (-webkit-min-device-pixel-ratio: 2) {
-    -webkit-transform:scaleX(.5);
+    -webkit-transform: scaleX(.5);
   }
+
   @media screen and (-webkit-min-device-pixel-ratio: 3) {
     -webkit-transform: scaleX(.3333);
   }
@@ -61,20 +77,14 @@
   right: 0;
   top: 0;
   -webkit-transform-origin: right top;
+
   @media screen and (-webkit-min-device-pixel-ratio: 2) {
-    -webkit-transform:scaleX(.5);
+    -webkit-transform: scaleX(.5);
   }
+
   @media screen and (-webkit-min-device-pixel-ratio: 3) {
     -webkit-transform: scaleX(.3333);
   }
-}
-
-.ui-border-t,
-.ui-border-l,
-.ui-border-b,
-.ui-border-r,
-.ui-border-tb {
-  position: relative;
 }
 
 .ui-border-tb:before {
@@ -86,9 +96,11 @@
   left: 0;
   top: 0;
   -webkit-transform-origin: left top;
+
   @media screen and (-webkit-min-device-pixel-ratio: 2) {
-    -webkit-transform:scaleY(.5);
+    -webkit-transform: scaleY(.5);
   }
+
   @media screen and (-webkit-min-device-pixel-ratio: 3) {
     -webkit-transform: scaleY(.3333);
   }
@@ -103,9 +115,11 @@
   left: 0;
   bottom: 0;
   -webkit-transform-origin: left bottom;
+
   @media screen and (-webkit-min-device-pixel-ratio: 2) {
-    -webkit-transform:scaleY(.5);
+    -webkit-transform: scaleY(.5);
   }
+
   @media screen and (-webkit-min-device-pixel-ratio: 3) {
     -webkit-transform: scaleY(.3333);
   }
@@ -125,11 +139,13 @@
   pointer-events: none;
   z-index: $z-index-border;
   pointer-events: none;
+
   @media screen and (-webkit-min-device-pixel-ratio: 2) {
     width: 200%;
     height: 200%;
     -webkit-transform: scale(.5);
   }
+
   @media screen and (-webkit-min-device-pixel-ratio: 3) {
     width: 300%;
     height: 300%;
@@ -149,20 +165,22 @@
     -webkit-transform-origin: 0 0;
     padding: 1px;
     -webkit-box-sizing: border-box;
-    border-radius: 4px;
+    border-radius: 0.05rem;
     pointer-events: none;
     z-index: $z-index-border;
+
     @media screen and (-webkit-min-device-pixel-ratio: 2) {
       width: 200%;
       height: 200%;
       -webkit-transform: scale(.5);
-      border-radius: 8px;
+      border-radius: 0.1rem;
     }
+
     @media screen and (-webkit-min-device-pixel-ratio: 3) {
       width: 300%;
       height: 300%;
       -webkit-transform: scale(.3333);
-      border-radius: 12px;
+      border-radius: 0.15rem;
     }
   }
 }

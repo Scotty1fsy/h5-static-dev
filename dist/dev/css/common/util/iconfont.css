@@ -1,12 +1,12 @@
 @font-face {
   font-family: 'iconfont';
   /* project id 809156 */
-  src: url("//at.alicdn.com/t/font_809156_98hrv7v6onn.eot");
-  src: url("//at.alicdn.com/t/font_809156_98hrv7v6onn.eot?#iefix") format("embedded-opentype"), url("//at.alicdn.com/t/font_809156_98hrv7v6onn.woff") format("woff"), url("//at.alicdn.com/t/font_809156_98hrv7v6onn.ttf") format("truetype"), url("//at.alicdn.com/t/font_809156_98hrv7v6onn.svg#iconfont") format("svg"); }
+  src: url("//at.alicdn.com/t/font_809156_0iqtudpk0ffe.eot");
+  src: url("//at.alicdn.com/t/font_809156_0iqtudpk0ffe.eot?#iefix") format("embedded-opentype"), url("//at.alicdn.com/t/font_809156_0iqtudpk0ffe.woff") format("woff"), url("//at.alicdn.com/t/font_809156_0iqtudpk0ffe.ttf") format("truetype"), url("//at.alicdn.com/t/font_809156_0iqtudpk0ffe.svg#iconfont") format("svg"); }
 
 .iconfont {
   font-family: "iconfont" !important;
-  font-size: 16px;
+  font-size: 0.26rem;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
@@ -14,64 +14,61 @@
 .icon-arrow-right-circle:before {
   content: "\e60d"; }
 
-.icon-arrow-right-square:before {
-  content: "\e60e"; }
-
-.icon-arrow-right:before {
-  content: "\e664"; }
-
 .icon-wechat:before {
   content: "\e661"; }
-
-.icon-search-default:before {
-  content: "\e630"; }
 
 .icon-camera:before {
   content: "\e634"; }
 
-.icon-arrow-down:before {
-  content: "\e6f7"; }
-
-.icon-institution-default:before {
-  content: "\e6c7"; }
-
-.icon-close:before {
-  content: "\e616"; }
-
 .icon-twitter:before {
   content: "\e72c"; }
-
-.icon-user-selected:before {
-  content: "\e60f"; }
-
-.icon-arrow-up:before {
-  content: "\e602"; }
 
 .icon-facebook:before {
   content: "\e632"; }
 
-.icon-home-default:before {
-  content: "\e603"; }
-
 .icon-weibo:before {
   content: "\e737"; }
 
-.icon-search-selected:before {
-  content: "\e636"; }
+.icon-address:before {
+  content: "\e645"; }
 
-.icon-home-selected:before {
-  content: "\e6f3"; }
-
-.icon-list:before {
-  content: "\e667"; }
+.icon-arrow-right-square:before {
+  content: "\e646"; }
 
 .icon-buy:before {
-  content: "\e61f"; }
+  content: "\e647"; }
 
-.icon-institution-selected:before {
-  content: "\e601"; }
+.icon-email:before {
+  content: "\e648"; }
 
-.icon-user-default:before {
-  content: "\e7ae"; }
+.icon-home:before {
+  content: "\e649"; }
+
+.icon-institution:before {
+  content: "\e64a"; }
+
+.icon-search:before {
+  content: "\e64b"; }
+
+.icon-service:before {
+  content: "\e64c"; }
+
+.icon-user:before {
+  content: "\e64d"; }
+
+.icon-products:before {
+  content: "\e64e"; }
+
+.icon-arrow-down:before {
+  content: "\e64f"; }
+
+.icon-close:before {
+  content: "\e650"; }
+
+.icon-arrow-up:before {
+  content: "\e738"; }
+
+.icon-list:before {
+  content: "\e651"; }
 
 /*# sourceMappingURL=../../maps/common/util/iconfont.css.map */

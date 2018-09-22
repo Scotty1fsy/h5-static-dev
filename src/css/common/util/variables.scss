@@ -1,6 +1,6 @@
 //border
 //----------------------------------------
-$bordercolor: #e9e9e9;
+$bordercolor: #dcdcdc;
 $border-t: -webkit-gradient(linear, left bottom, left top, color-stop(.5, rgba(0, 0, 0, 0)), color-stop(.5, $bordercolor));
 $border-b: -webkit-gradient(linear, left top, left bottom, color-stop(.5, rgba(0, 0, 0, 0)), color-stop(.5, $bordercolor));
 $border-l: -webkit-gradient(linear, right top, left top, color-stop(.5, rgba(0, 0, 0, 0)), color-stop(.5, $bordercolor));
@@ -9,3 +9,62 @@ $border-radius-base: 4px;
 $border-radius-lg: 8px;
 $border-radius-max: 200px;
 $z-index-border: 100;
+
+//button
+//------------------------------------
+$button-height: 30px;
+$button-width: 60px;
+$button-padding: 0 16px;
+$button-padding-s: 0 10px;
+$button-min-width: 56px;
+$button-size: 14px;
+$button-border-radius: 3px;
+$button-border-radius-s: 2px;
+$button-border-radius-b: 6px;
+
+$button-hot-area: 7px;
+$button-bg-color: #fff;
+$button-text: rgb(0, 0, 0);
+$button-border-color: rgb(195, 200, 204);
+
+//长按钮
+$button-lg-height: 0.8rem;
+$button-lg-size: 0.3rem;
+$button-lg-border-radius: 0;
+
+// 小按钮
+$button-s-width: 60px;
+$button-s-height: 30px;
+$button-s-size: 14px;
+
+$button-before-border-radius: 6px;
+$button-lg-before-border-radius: 10px;
+$button-wrap-padding: 10px 12px;
+
+$button-group-margin: 10px;
+
+//2/3按钮
+$button-lg-nowhole-width: 220px;
+$button-lg-nowhole-height: 40px;
+
+//蓝色按钮
+$button-primary-bg-color: #5E7358;
+$button-primary-text: rgb(255, 255, 255);
+$button-primary-border-color: #5E7358;
+
+//红色按钮
+$button-danger-bg-color: #FB6155;
+$button-danger-text: rgb(255, 255, 255);
+$button-danger-border-color: #FB6155;
+
+$button-disabled-bg-color: #e9ebec;
+$button-disabled-text: #BBBBBB;
+
+$button-progress-bg-color: #18b4ed;
+$button-progress-text: #000;
+$button-progress-disabled-border-color: #18b4ed;
+
+//新增圆形按钮
+//---------------------------------------------
+$button-circle-s-radius: 60px;
+$button-circle-b-radius: 100px;

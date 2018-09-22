@@ -1,0 +1,26 @@
+.institution-recommend {
+  padding: 0.5rem 0.75rem 0.3rem;
+
+  header {
+    h3 {
+      font-size: 0.42rem;
+      font-weight: bold;
+      line-height: 0.58rem;
+    }
+
+    h5 {
+      font-size: 0.22rem;
+      font-weight: 300;
+    }
+  }
+
+  p {
+    padding: 0.4rem 0;
+    font-size: 0.26rem;
+    line-height: 0.48rem;
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+}

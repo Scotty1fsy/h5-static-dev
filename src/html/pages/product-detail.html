@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-@@include('../tpl/header.htm', {"title": "产品详情", "pageCssPath": ["pages/product-detail"], "baseHref": "../../"})
+@@include('../tpl/header.htm', {"title": "产品详情", "pageCssPath": ["plugins/swiper", "pages/product-detail"], "baseHref":
+"../../"})
 <style>
   .table-demo {
     padding: 15px 0;
@@ -9,68 +10,134 @@
 </style>
 
 <body>
-  <div class="iframe-content-container">
-    <!-- 定义页面内容区域 start  -->
-    <div class="search-wrap">
-      <form class="b-form form-inline">
-        <div class="form-group">
-          <label for="user" class="control-label key-word">关键字</label>
-          <div class="form-item">
-            <input autocomplete="off" placeholder="请输名称" size="sm" type="text" class="form-control input-sm">
-          </div>
+  <div class="container">
+    @@include('../tpl/header-bar.htm')
+
+    <div class="swiper-container swiper-container-pd">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <a href="#"><img src="image/7-01.png" alt="Banner图"></a>
         </div>
-        <div class="form-group">
-          <div class="form-btns">
-            <button type="button" class="btn btn-primary btn-sm">检索</button>
-            <button type="button" class="btn btn-default btn-sm btn-reset">重置</button>
-          </div>
+        <div class="swiper-slide">
+          <a href="#"><img src="image/7-01.png" alt="Banner图"></a>
         </div>
-      </form>
-    </div>
-    <div class="option-btns-wrap">
-      <button type="button" class="btn btn-primary btn-sm" id="depotAdd">
-        <i class="iconfont icon-xinzeng"></i>新增</button>
-    </div>
-    <div class="table-demo">
-      <table grid-manager="demoOne"></table>
-    </div>
-    <div tabindex="-1" id="formModal" role="dialog" class="modal fade" aria-hidden="true" aria-labelledby="formModalLabel">
-      <div role="document" class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" aria-label="close" class="btn close" data-dismiss="modal" aria-hidden="true">
-              <i aria-hidden="true" class="iconfont icon-close"></i>
-            </button>
-            <h4 class="modal-title" id="formModalLabel"></h4>
-          </div>
-          <div class="modal-body">
-            <form class="b-form form-horizontal" id="form-validator" action="/api/submitActivies">
-              <div class="form-group has-feedback">
-                <label for="depot_number" class="control-label" style="width: 80px;">编号</label>
-                <div class="form-item" style="margin-left: 80px;">
-                  <input autocomplete="off" type="text" disabled name="depotNumber" class="form-control">
-                </div>
-              </div>
-              <div class="form-group required has-feedback">
-                <label for="brand_name" class="control-label" style="width: 80px;">名称</label>
-                <div class="form-item" style="margin-left: 80px;">
-                  <input autocomplete="off" type="text" placeholder="手动录入" name="brandName" class="form-control">
-                </div>
-              </div>
-              <div class="form-btns" style="width: 538px;">
-                <button type="submit" class="btn btn-primary btn-mw" data-type="saveAndAdd">保存并新增</button>
-                <button type="submit" class="btn btn-mw" data-type="save">保存</button>
-                <button type="button" class="btn btn-default btn-mw" data-dismiss="modal">取消</button>
-              </div>
-            </form>
-          </div>
+        <div class="swiper-slide">
+          <a href="#"><img src="image/7-01.png" alt="Banner图"></a>
         </div>
       </div>
+      <!-- 如果需要分页器 -->
+      <div class="swiper-pagination sl-swiper-pagination-pd"></div>
     </div>
-    <!-- 定义页面内容区域 end  -->
+
+    <section class="product-info-wrap">
+      <div class="product-info">
+        <h3>便携手持风扇Fresh Fan F1</h3>
+        <div>方便携带\可充电\三档可调\持久续航</div>
+      </div>
+      <div class="param-wrap">
+        <img src="image/8-01.png" alt="商品小图片">
+        <div class="params">
+          <div class="params-item hover-layer selected" data-color="#F5F5F4"><span></span><span>素米白</span></div>
+          <div class="params-item hover-layer" data-color="#54575D"><span></span><span>静谧蓝</span></div>
+          <div class="params-item hover-layer" data-color="#FFE2DD"><span></span><span>珊瑚粉</span></div>
+          <div class="params-item hover-layer" data-color="#7f8f7a"><span></span><span>海松绿</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ad-article ui-border-tb">
+      <img src="image/8-02.png" alt="文章小图">
+      <div class="article-info">
+        <h3>续航十小时,清爽一夏天,高颜值手持风扇</h3>
+        <div class="detail">便携手持式小风扇，加底座可变小台扇，三档风力满足不同需求，低功率节能环保超强续航！</div>
+        <div class="arrow-right"></div>
+      </div>
+    </section>
+
+    <a href="http://zmnxbc.com/s/CRuQV?tm=f873c4" class="ad-banner">
+      <img src="image/8-07.png" alt="广告图">
+    </a>
+
+    <img src="image/8-03.png" alt="详情图">
+
+    <section class="recomment-wrap">
+      <h3 class="title">相关产品推荐</h3>
+      <div class="swiper-container swiper-container-recomment">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <a class="product-detail-link" href="../html/pages/product-detail.html">
+              <img src="image/8-04.png" alt="新品推荐图">
+              <div class="product-info">
+                <h4>Power Bank X8</h4>
+                <span>创意移动电源</span>
+                <i class="iconfont icon-arrow-right-square"></i>
+              </div>
+            </a>
+          </div>
+          <div class="swiper-slide">
+            <a class="product-detail-link" href="../html/pages/product-detail.html">
+              <img src="image/8-05.png" alt="新品推荐图">
+              <div class="product-info">
+                <h4>Power Bank X8</h4>
+                <span>创意移动电源</span>
+                <i class="iconfont icon-arrow-right-square"></i>
+              </div>
+            </a>
+          </div>
+          <div class="swiper-slide">
+            <a class="product-detail-link" href="../html/pages/product-detail.html">
+              <img src="image/8-04.png" alt="新品推荐图">
+              <div class="product-info">
+                <h4>Power Bank X8</h4>
+                <span>创意移动电源</span>
+                <i class="iconfont icon-arrow-right-square"></i>
+              </div>
+            </a>
+          </div>
+        </div>
+        <!-- 如果需要分页器 -->
+        <div class="swiper-pagination sl-swiper-pagination-recomment"></div>
+      </div>
+    </section>
+
+    <a href="../html/pages/question.html" class="question-page-link">
+      <img src="image/8-06.png" alt="常见问题图片">
+    </a>
+
+    <section class="page-footer">
+      <div class="footer-up">
+        <image class="sule-logo" src="image/1-01.png" alt="SOLOVE"></image>
+        <div class="company-info">
+          <div class="info-item">
+            <span>地 址</span>
+            <span>深圳市南山区蛇口网谷万海大厦C座602室</span>
+          </div>
+          <div class="info-item">
+            <span>电 话</span>
+            <span>400-690-9695</span>
+          </div>
+        </div>
+        <div class="company-idea">
+          <h3>简素乐活-素简之道，乐活人生</h3>
+          <h3>SOLOVE - SIMPLE WAY, JOYFUL LIFE</h3>
+        </div>
+        <div class="share-wrap">
+          <a href="#" class="social-share-icon iconfont icon-wechat"></a>
+          <a href="#" class="social-share-icon iconfont icon-weibo"></a>
+        </div>
+      </div>
+      <div class="company-copyright ui-border-t">Copyright ©️2018 Mecom Technology Co., Ltd</div>
+    </section>
+
+    <div class="footer-bar">
+      <a href="http://zmnxbc.com/s/CRuQV?tm=f873c4" class="hover-layer">
+        <i class="iconfont icon-buy"></i>
+        <span>BUY NOW</span>
+      </a>
+    </div>
   </div>
 
-  @@include('../tpl/footer.htm', {"pageJsPath": ["pages/product-detail"]})
+  @@include('../tpl/footer.htm', {"pageJsPath": ["plugins/swiper", "pages/product-detail"]})
 </body>
 
 </html>

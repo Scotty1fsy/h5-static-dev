@@ -1648,3 +1648,720 @@ window.$ === undefined && (window.$ = Zepto)
 })()
   return Zepto
 }))
+
+//     Zepto.js
+//     (c) 2010-2016 Thomas Fuchs
+//     Zepto.js may be freely distributed under the MIT license.
+
+;
+(function ($) {
+  // Create a collection of callbacks to be fired in a sequence, with configurable behaviour
+  // Option flags:
+  //   - once: Callbacks fired at most one time.
+  //   - memory: Remember the most recent context and arguments
+  //   - stopOnFalse: Cease iterating over callback list
+  //   - unique: Permit adding at most one instance of the same callback
+  $.Callbacks = function (options) {
+    options = $.extend({}, options)
+
+    var memory, // Last fire value (for non-forgettable lists)
+      fired, // Flag to know if list was already fired
+      firing, // Flag to know if list is currently firing
+      firingStart, // First callback to fire (used internally by add and fireWith)
+      firingLength, // End of the loop when firing
+      firingIndex, // Index of currently firing callback (modified by remove if needed)
+      list = [], // Actual callback list
+      stack = !options.once && [], // Stack of fire calls for repeatable lists
+      fire = function (data) {
+        memory = options.memory && data
+        fired = true
+        firingIndex = firingStart || 0
+        firingStart = 0
+        firingLength = list.length
+        firing = true
+        for (; list && firingIndex < firingLength; ++firingIndex) {
+          if (list[firingIndex].apply(data[0], data[1]) === false && options.stopOnFalse) {
+            memory = false
+            break
+          }
+        }
+        firing = false
+        if (list) {
+          if (stack) stack.length && fire(stack.shift())
+          else if (memory) list.length = 0
+          else Callbacks.disable()
+        }
+      },
+
+      Callbacks = {
+        add: function () {
+          if (list) {
+            var start = list.length,
+              add = function (args) {
+                $.each(args, function (_, arg) {
+                  if (typeof arg === "function") {
+                    if (!options.unique || !Callbacks.has(arg)) list.push(arg)
+                  } else if (arg && arg.length && typeof arg !== 'string') add(arg)
+                })
+              }
+            add(arguments)
+            if (firing) firingLength = list.length
+            else if (memory) {
+              firingStart = start
+              fire(memory)
+            }
+          }
+          return this
+        },
+        remove: function () {
+          if (list) {
+            $.each(arguments, function (_, arg) {
+              var index
+              while ((index = $.inArray(arg, list, index)) > -1) {
+                list.splice(index, 1)
+                // Handle firing indexes
+                if (firing) {
+                  if (index <= firingLength) --firingLength
+                  if (index <= firingIndex) --firingIndex
+                }
+              }
+            })
+          }
+          return this
+        },
+        has: function (fn) {
+          return !!(list && (fn ? $.inArray(fn, list) > -1 : list.length))
+        },
+        empty: function () {
+          firingLength = list.length = 0
+          return this
+        },
+        disable: function () {
+          list = stack = memory = undefined
+          return this
+        },
+        disabled: function () {
+          return !list
+        },
+        lock: function () {
+          stack = undefined
+          if (!memory) Callbacks.disable()
+          return this
+        },
+        locked: function () {
+          return !stack
+        },
+        fireWith: function (context, args) {
+          if (list && (!fired || stack)) {
+            args = args || []
+            args = [context, args.slice ? args.slice() : args]
+            if (firing) stack.push(args)
+            else fire(args)
+          }
+          return this
+        },
+        fire: function () {
+          return Callbacks.fireWith(this, arguments)
+        },
+        fired: function () {
+          return !!fired
+        }
+      }
+
+    return Callbacks
+  }
+})(Zepto)
+
+//     Zepto.js
+//     (c) 2010-2016 Thomas Fuchs
+//     Zepto.js may be freely distributed under the MIT license.
+
+// The following code is heavily inspired by jQuery's $.fn.data()
+
+;
+(function ($) {
+  var data = {},
+    dataAttr = $.fn.data,
+    camelize = $.camelCase,
+    exp = $.expando = 'Zepto' + (+new Date()),
+    emptyArray = []
+
+  // Get value from node:
+  // 1. first try key as given,
+  // 2. then try camelized key,
+  // 3. fall back to reading "data-*" attribute.
+  function getData(node, name) {
+    var id = node[exp],
+      store = id && data[id]
+    if (name === undefined) return store || setData(node)
+    else {
+      if (store) {
+        if (name in store) return store[name]
+        var camelName = camelize(name)
+        if (camelName in store) return store[camelName]
+      }
+      return dataAttr.call($(node), name)
+    }
+  }
+
+  // Store value under camelized key on node
+  function setData(node, name, value) {
+    var id = node[exp] || (node[exp] = ++$.uuid),
+      store = data[id] || (data[id] = attributeData(node))
+    if (name !== undefined) store[camelize(name)] = value
+    return store
+  }
+
+  // Read all "data-*" attributes from a node
+  function attributeData(node) {
+    var store = {}
+    $.each(node.attributes || emptyArray, function (i, attr) {
+      if (attr.name.indexOf('data-') == 0)
+        store[camelize(attr.name.replace('data-', ''))] =
+        $.zepto.deserializeValue(attr.value)
+    })
+    return store
+  }
+
+  $.fn.data = function (name, value) {
+    return value === undefined ?
+      // set multiple values via object
+      $.isPlainObject(name) ?
+      this.each(function (i, node) {
+        $.each(name, function (key, value) {
+          setData(node, key, value)
+        })
+      }) :
+      // get value from first element
+      (0 in this ? getData(this[0], name) : undefined) :
+      // set value on all elements
+      this.each(function () {
+        setData(this, name, value)
+      })
+  }
+
+  $.data = function (elem, name, value) {
+    return $(elem).data(name, value)
+  }
+
+  $.hasData = function (elem) {
+    var id = elem[exp],
+      store = id && data[id]
+    return store ? !$.isEmptyObject(store) : false
+  }
+
+  $.fn.removeData = function (names) {
+    if (typeof names == 'string') names = names.split(/\s+/)
+    return this.each(function () {
+      var id = this[exp],
+        store = id && data[id]
+      if (store) $.each(names || store, function (key) {
+        delete store[names ? camelize(this) : key]
+      })
+    })
+  }
+
+  // Generate extended `remove` and `empty` functions
+  ;
+  ['remove', 'empty'].forEach(function (methodName) {
+    var origFn = $.fn[methodName]
+    $.fn[methodName] = function () {
+      var elements = this.find('*')
+      if (methodName === 'remove') elements = elements.add(this)
+      elements.removeData()
+      return origFn.call(this)
+    }
+  })
+})(Zepto)
+
+//     Zepto.js
+//     (c) 2010-2016 Thomas Fuchs
+//     Zepto.js may be freely distributed under the MIT license.
+//
+//     Some code (c) 2005, 2013 jQuery Foundation, Inc. and other contributors
+
+;
+(function ($) {
+  var slice = Array.prototype.slice
+
+  function Deferred(func) {
+    var tuples = [
+        // action, add listener, listener list, final state
+        ["resolve", "done", $.Callbacks({
+          once: 1,
+          memory: 1
+        }), "resolved"],
+        ["reject", "fail", $.Callbacks({
+          once: 1,
+          memory: 1
+        }), "rejected"],
+        ["notify", "progress", $.Callbacks({
+          memory: 1
+        })]
+      ],
+      state = "pending",
+      promise = {
+        state: function () {
+          return state
+        },
+        always: function () {
+          deferred.done(arguments).fail(arguments)
+          return this
+        },
+        then: function ( /* fnDone [, fnFailed [, fnProgress]] */ ) {
+          var fns = arguments
+          return Deferred(function (defer) {
+            $.each(tuples, function (i, tuple) {
+              var fn = $.isFunction(fns[i]) && fns[i]
+              deferred[tuple[1]](function () {
+                var returned = fn && fn.apply(this, arguments)
+                if (returned && $.isFunction(returned.promise)) {
+                  returned.promise()
+                    .done(defer.resolve)
+                    .fail(defer.reject)
+                    .progress(defer.notify)
+                } else {
+                  var context = this === promise ? defer.promise() : this,
+                    values = fn ? [returned] : arguments
+                  defer[tuple[0] + "With"](context, values)
+                }
+              })
+            })
+            fns = null
+          }).promise()
+        },
+
+        promise: function (obj) {
+          return obj != null ? $.extend(obj, promise) : promise
+        }
+      },
+      deferred = {}
+
+    $.each(tuples, function (i, tuple) {
+      var list = tuple[2],
+        stateString = tuple[3]
+
+      promise[tuple[1]] = list.add
+
+      if (stateString) {
+        list.add(function () {
+          state = stateString
+        }, tuples[i ^ 1][2].disable, tuples[2][2].lock)
+      }
+
+      deferred[tuple[0]] = function () {
+        deferred[tuple[0] + "With"](this === deferred ? promise : this, arguments)
+        return this
+      }
+      deferred[tuple[0] + "With"] = list.fireWith
+    })
+
+    promise.promise(deferred)
+    if (func) func.call(deferred, deferred)
+    return deferred
+  }
+
+  $.when = function (sub) {
+    var resolveValues = slice.call(arguments),
+      len = resolveValues.length,
+      i = 0,
+      remain = len !== 1 || (sub && $.isFunction(sub.promise)) ? len : 0,
+      deferred = remain === 1 ? sub : Deferred(),
+      progressValues, progressContexts, resolveContexts,
+      updateFn = function (i, ctx, val) {
+        return function (value) {
+          ctx[i] = this
+          val[i] = arguments.length > 1 ? slice.call(arguments) : value
+          if (val === progressValues) {
+            deferred.notifyWith(ctx, val)
+          } else if (!(--remain)) {
+            deferred.resolveWith(ctx, val)
+          }
+        }
+      }
+
+    if (len > 1) {
+      progressValues = new Array(len)
+      progressContexts = new Array(len)
+      resolveContexts = new Array(len)
+      for (; i < len; ++i) {
+        if (resolveValues[i] && $.isFunction(resolveValues[i].promise)) {
+          resolveValues[i].promise()
+            .done(updateFn(i, resolveContexts, resolveValues))
+            .fail(deferred.reject)
+            .progress(updateFn(i, progressContexts, progressValues))
+        } else {
+          --remain
+        }
+      }
+    }
+    if (!remain) deferred.resolveWith(resolveContexts, resolveValues)
+    return deferred.promise()
+  }
+
+  $.Deferred = Deferred
+})(Zepto)
+
+//     Zepto.js
+//     (c) 2010-2016 Thomas Fuchs
+//     Zepto.js may be freely distributed under the MIT license.
+
+;
+(function ($) {
+  function detect(ua, platform) {
+    var os = this.os = {},
+      browser = this.browser = {},
+      webkit = ua.match(/Web[kK]it[\/]{0,1}([\d.]+)/),
+      android = ua.match(/(Android);?[\s\/]+([\d.]+)?/),
+      osx = !!ua.match(/\(Macintosh\; Intel /),
+      ipad = ua.match(/(iPad).*OS\s([\d_]+)/),
+      ipod = ua.match(/(iPod)(.*OS\s([\d_]+))?/),
+      iphone = !ipad && ua.match(/(iPhone\sOS)\s([\d_]+)/),
+      webos = ua.match(/(webOS|hpwOS)[\s\/]([\d.]+)/),
+      win = /Win\d{2}|Windows/.test(platform),
+      wp = ua.match(/Windows Phone ([\d.]+)/),
+      touchpad = webos && ua.match(/TouchPad/),
+      kindle = ua.match(/Kindle\/([\d.]+)/),
+      silk = ua.match(/Silk\/([\d._]+)/),
+      blackberry = ua.match(/(BlackBerry).*Version\/([\d.]+)/),
+      bb10 = ua.match(/(BB10).*Version\/([\d.]+)/),
+      rimtabletos = ua.match(/(RIM\sTablet\sOS)\s([\d.]+)/),
+      playbook = ua.match(/PlayBook/),
+      chrome = ua.match(/Chrome\/([\d.]+)/) || ua.match(/CriOS\/([\d.]+)/),
+      firefox = ua.match(/Firefox\/([\d.]+)/),
+      firefoxos = ua.match(/\((?:Mobile|Tablet); rv:([\d.]+)\).*Firefox\/[\d.]+/),
+      ie = ua.match(/MSIE\s([\d.]+)/) || ua.match(/Trident\/[\d](?=[^\?]+).*rv:([0-9.].)/),
+      webview = !chrome && ua.match(/(iPhone|iPod|iPad).*AppleWebKit(?!.*Safari)/),
+      safari = webview || ua.match(/Version\/([\d.]+)([^S](Safari)|[^M]*(Mobile)[^S]*(Safari))/)
+
+    // Todo: clean this up with a better OS/browser seperation:
+    // - discern (more) between multiple browsers on android
+    // - decide if kindle fire in silk mode is android or not
+    // - Firefox on Android doesn't specify the Android version
+    // - possibly devide in os, device and browser hashes
+
+    if (browser.webkit = !!webkit) browser.version = webkit[1]
+
+    if (android) os.android = true, os.version = android[2]
+    if (iphone && !ipod) os.ios = os.iphone = true, os.version = iphone[2].replace(/_/g, '.')
+    if (ipad) os.ios = os.ipad = true, os.version = ipad[2].replace(/_/g, '.')
+    if (ipod) os.ios = os.ipod = true, os.version = ipod[3] ? ipod[3].replace(/_/g, '.') : null
+    if (wp) os.wp = true, os.version = wp[1]
+    if (webos) os.webos = true, os.version = webos[2]
+    if (touchpad) os.touchpad = true
+    if (blackberry) os.blackberry = true, os.version = blackberry[2]
+    if (bb10) os.bb10 = true, os.version = bb10[2]
+    if (rimtabletos) os.rimtabletos = true, os.version = rimtabletos[2]
+    if (playbook) browser.playbook = true
+    if (kindle) os.kindle = true, os.version = kindle[1]
+    if (silk) browser.silk = true, browser.version = silk[1]
+    if (!silk && os.android && ua.match(/Kindle Fire/)) browser.silk = true
+    if (chrome) browser.chrome = true, browser.version = chrome[1]
+    if (firefox) browser.firefox = true, browser.version = firefox[1]
+    if (firefoxos) os.firefoxos = true, os.version = firefoxos[1]
+    if (ie) browser.ie = true, browser.version = ie[1]
+    if (safari && (osx || os.ios || win)) {
+      browser.safari = true
+      if (!os.ios) browser.version = safari[1]
+    }
+    if (webview) browser.webview = true
+
+    os.tablet = !!(ipad || playbook || (android && !ua.match(/Mobile/)) ||
+      (firefox && ua.match(/Tablet/)) || (ie && !ua.match(/Phone/) && ua.match(/Touch/)))
+    os.phone = !!(!os.tablet && !os.ipod && (android || iphone || webos || blackberry || bb10 ||
+      (chrome && ua.match(/Android/)) || (chrome && ua.match(/CriOS\/([\d.]+)/)) ||
+      (firefox && ua.match(/Mobile/)) || (ie && ua.match(/Touch/))))
+  }
+
+  detect.call($, navigator.userAgent, navigator.platform)
+  // make available to unit tests
+  $.__detect = detect
+
+})(Zepto)
+
+//     Zepto.js
+//     (c) 2010-2016 Thomas Fuchs
+//     Zepto.js may be freely distributed under the MIT license.
+
+;
+(function ($, undefined) {
+  var prefix = '',
+    eventPrefix,
+    vendors = {
+      Webkit: 'webkit',
+      Moz: '',
+      O: 'o'
+    },
+    testEl = document.createElement('div'),
+    supportedTransforms = /^((translate|rotate|scale)(X|Y|Z|3d)?|matrix(3d)?|perspective|skew(X|Y)?)$/i,
+    transform,
+    transitionProperty, transitionDuration, transitionTiming, transitionDelay,
+    animationName, animationDuration, animationTiming, animationDelay,
+    cssReset = {}
+
+  function dasherize(str) {
+    return str.replace(/([A-Z])/g, '-$1').toLowerCase()
+  }
+
+  function normalizeEvent(name) {
+    return eventPrefix ? eventPrefix + name : name.toLowerCase()
+  }
+
+  if (testEl.style.transform === undefined) $.each(vendors, function (vendor, event) {
+    if (testEl.style[vendor + 'TransitionProperty'] !== undefined) {
+      prefix = '-' + vendor.toLowerCase() + '-'
+      eventPrefix = event
+      return false
+    }
+  })
+
+  transform = prefix + 'transform'
+  cssReset[transitionProperty = prefix + 'transition-property'] =
+    cssReset[transitionDuration = prefix + 'transition-duration'] =
+    cssReset[transitionDelay = prefix + 'transition-delay'] =
+    cssReset[transitionTiming = prefix + 'transition-timing-function'] =
+    cssReset[animationName = prefix + 'animation-name'] =
+    cssReset[animationDuration = prefix + 'animation-duration'] =
+    cssReset[animationDelay = prefix + 'animation-delay'] =
+    cssReset[animationTiming = prefix + 'animation-timing-function'] = ''
+
+  $.fx = {
+    off: (eventPrefix === undefined && testEl.style.transitionProperty === undefined),
+    speeds: {
+      _default: 400,
+      fast: 200,
+      slow: 600
+    },
+    cssPrefix: prefix,
+    transitionEnd: normalizeEvent('TransitionEnd'),
+    animationEnd: normalizeEvent('AnimationEnd')
+  }
+
+  $.fn.animate = function (properties, duration, ease, callback, delay) {
+    if ($.isFunction(duration))
+      callback = duration, ease = undefined, duration = undefined
+    if ($.isFunction(ease))
+      callback = ease, ease = undefined
+    if ($.isPlainObject(duration))
+      ease = duration.easing, callback = duration.complete, delay = duration.delay, duration = duration.duration
+    if (duration) duration = (typeof duration == 'number' ? duration :
+      ($.fx.speeds[duration] || $.fx.speeds._default)) / 1000
+    if (delay) delay = parseFloat(delay) / 1000
+    return this.anim(properties, duration, ease, callback, delay)
+  }
+
+  $.fn.anim = function (properties, duration, ease, callback, delay) {
+    var key, cssValues = {},
+      cssProperties, transforms = '',
+      that = this,
+      wrappedCallback, endEvent = $.fx.transitionEnd,
+      fired = false
+
+    if (duration === undefined) duration = $.fx.speeds._default / 1000
+    if (delay === undefined) delay = 0
+    if ($.fx.off) duration = 0
+
+    if (typeof properties == 'string') {
+      // keyframe animation
+      cssValues[animationName] = properties
+      cssValues[animationDuration] = duration + 's'
+      cssValues[animationDelay] = delay + 's'
+      cssValues[animationTiming] = (ease || 'linear')
+      endEvent = $.fx.animationEnd
+    } else {
+      cssProperties = []
+      // CSS transitions
+      for (key in properties)
+        if (supportedTransforms.test(key)) transforms += key + '(' + properties[key] + ') '
+      else cssValues[key] = properties[key], cssProperties.push(dasherize(key))
+
+      if (transforms) cssValues[transform] = transforms, cssProperties.push(transform)
+      if (duration > 0 && typeof properties === 'object') {
+        cssValues[transitionProperty] = cssProperties.join(', ')
+        cssValues[transitionDuration] = duration + 's'
+        cssValues[transitionDelay] = delay + 's'
+        cssValues[transitionTiming] = (ease || 'linear')
+      }
+    }
+
+    wrappedCallback = function (event) {
+      if (typeof event !== 'undefined') {
+        if (event.target !== event.currentTarget) return // makes sure the event didn't bubble from "below"
+        $(event.target).unbind(endEvent, wrappedCallback)
+      } else
+        $(this).unbind(endEvent, wrappedCallback) // triggered by setTimeout
+
+      fired = true
+      $(this).css(cssReset)
+      callback && callback.call(this)
+    }
+    if (duration > 0) {
+      this.bind(endEvent, wrappedCallback)
+      // transitionEnd is not always firing on older Android phones
+      // so make sure it gets fired
+      setTimeout(function () {
+        if (fired) return
+        wrappedCallback.call(that)
+      }, ((duration + delay) * 1000) + 25)
+    }
+
+    // trigger page reflow so new elements can animate
+    this.size() && this.get(0).clientLeft
+
+    this.css(cssValues)
+
+    if (duration <= 0) setTimeout(function () {
+      that.each(function () {
+        wrappedCallback.call(this)
+      })
+    }, 0)
+
+    return this
+  }
+
+  testEl = null
+})(Zepto)
+
+//     Zepto.js
+//     (c) 2010-2016 Thomas Fuchs
+//     Zepto.js may be freely distributed under the MIT license.
+
+;
+(function ($, undefined) {
+  var document = window.document,
+    origShow = $.fn.show,
+    origHide = $.fn.hide,
+    origToggle = $.fn.toggle
+
+  function anim(el, speed, opacity, scale, callback) {
+    if (typeof speed == 'function' && !callback) callback = speed, speed = undefined
+    var props = {
+      opacity: opacity
+    }
+    if (scale) {
+      props.scale = scale
+      el.css($.fx.cssPrefix + 'transform-origin', '0 0')
+    }
+    return el.animate(props, speed, null, callback)
+  }
+
+  function hide(el, speed, scale, callback) {
+    return anim(el, speed, 0, scale, function () {
+      origHide.call($(this))
+      callback && callback.call(this)
+    })
+  }
+
+  $.fn.show = function (speed, callback) {
+    origShow.call(this)
+    if (speed === undefined) speed = 0
+    else this.css('opacity', 0)
+    return anim(this, speed, 1, '1,1', callback)
+  }
+
+  $.fn.hide = function (speed, callback) {
+    if (speed === undefined) return origHide.call(this)
+    else return hide(this, speed, '0,0', callback)
+  }
+
+  $.fn.toggle = function (speed, callback) {
+    if (speed === undefined || typeof speed == 'boolean')
+      return origToggle.call(this, speed)
+    else return this.each(function () {
+      var el = $(this)
+      el[el.css('display') == 'none' ? 'show' : 'hide'](speed, callback)
+    })
+  }
+
+  $.fn.fadeTo = function (speed, opacity, callback) {
+    return anim(this, speed, opacity, null, callback)
+  }
+
+  $.fn.fadeIn = function (speed, callback) {
+    var target = this.css('opacity')
+    if (target > 0) this.css('opacity', 0)
+    else target = 1
+    return origShow.call(this).fadeTo(speed, target, callback)
+  }
+
+  $.fn.fadeOut = function (speed, callback) {
+    return hide(this, speed, null, callback)
+  }
+
+  $.fn.fadeToggle = function (speed, callback) {
+    return this.each(function () {
+      var el = $(this)
+      el[
+        (el.css('opacity') == 0 || el.css('display') == 'none') ? 'fadeIn' : 'fadeOut'
+      ](speed, callback)
+    })
+  }
+
+})(Zepto)
+
+//     Zepto.js
+//     (c) 2010-2016 Thomas Fuchs
+//     Zepto.js may be freely distributed under the MIT license.
+
+;
+(function (undefined) {
+  if (String.prototype.trim === undefined) // fix for iOS 3.2
+    String.prototype.trim = function () {
+      return this.replace(/^\s+|\s+$/g, '')
+    }
+
+  // For iOS 3.x
+  // from https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/reduce
+  if (Array.prototype.reduce === undefined)
+    Array.prototype.reduce = function (fun) {
+      if (this === void 0 || this === null) throw new TypeError()
+      var t = Object(this),
+        len = t.length >>> 0,
+        k = 0,
+        accumulator
+      if (typeof fun != 'function') throw new TypeError()
+      if (len == 0 && arguments.length == 1) throw new TypeError()
+
+      if (arguments.length >= 2)
+        accumulator = arguments[1]
+      else
+        do {
+          if (k in t) {
+            accumulator = t[k++]
+            break
+          }
+          if (++k >= len) throw new TypeError()
+        } while (true)
+
+      while (k < len) {
+        if (k in t) accumulator = fun.call(undefined, accumulator, t[k], k, t)
+        k++
+      }
+      return accumulator
+    }
+
+})()
+
+//     Zepto.js
+//     (c) 2010-2016 Thomas Fuchs
+//     Zepto.js may be freely distributed under the MIT license.
+
+;
+(function ($) {
+  $.fn.end = function () {
+    return this.prevObject || $()
+  }
+
+  $.fn.andSelf = function () {
+    return this.add(this.prevObject || $())
+  }
+
+  'filter,add,not,eq,first,last,find,closest,parents,parent,children,siblings'.split(',').forEach(function (property) {
+    var fn = $.fn[property]
+    $.fn[property] = function () {
+      var ret = fn.apply(this, arguments)
+      ret.prevObject = this
+      return ret
+    }
+  })
+})(Zepto)

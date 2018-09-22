@@ -1,0 +1,158 @@
+.product-info-wrap {
+  padding: 0 0.45rem;
+
+  .product-info {
+    h3 {
+      margin: 0.6rem auto 0;
+      font-size: 0.48rem;
+    }
+
+    div {
+      font-size: 0.26rem;
+      color: #666;
+    }
+  }
+
+  .param-wrap {
+    display: flex;
+    margin: 0.5rem auto 0.7rem;
+
+    img {
+      width: 2.2rem;
+      height: 2.2rem;
+      margin-right: 0.45rem;
+    }
+
+    .params {
+      display: flex;
+      align-content: center;
+      flex-wrap: wrap;
+
+      .params-item {
+        box-sizing: border-box;
+        height: 0.5rem;
+        line-height: 0.5rem;
+        width: 1.96rem;
+        margin: 0.18rem 0;
+        padding: 0.1rem;
+        font-size: 0.22rem;
+        display: flex;
+        align-items: center;
+
+        &.selected {
+          span:first-child {
+            padding: 0.08rem;
+            border: 1px solid #7f8f7a;
+          }
+        }
+
+        span {
+          &:first-child {
+            box-sizing: border-box;
+            display: block;
+            width: 0.5rem;
+            height: 0.5rem;
+            margin-right: 0.1rem;
+            padding: 0.07rem;
+            border: none;
+            border-radius: 50%;
+            background: #7f8f7a;
+            background-clip: content-box;
+          }
+
+          &:last-child {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+}
+
+.ad-article {
+  display: flex;
+  margin: 0 0.45rem 0.8rem;
+  padding: 0.35rem 0;
+
+  img {
+    width: 2rem;
+    height: 2.26rem;
+  }
+
+  .article-info {
+    flex: 1;
+    padding-left: 0.4rem;
+
+    h3 {
+      padding: 0.05rem;
+      font-size: 0.3rem;
+      line-height: 0.4rem;
+    }
+
+    .detail {
+      margin: 0.1rem auto 0.2rem;
+      font-size: 0.22rem;
+      color: #666;
+    }
+
+    .arrow-right {
+      position: relative;
+      width: 0.66rem;
+      height: 0.06rem;
+      padding-right: 0.03rem;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0.02rem;
+        left: 0;
+        right: 0.03rem;
+        height: 0.01rem;
+        background: #383838;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        border-left: 0.06rem solid #383838;
+        border-top: 0.03rem solid transparent;
+        border-bottom: 0.03rem solid transparent;
+      }
+    }
+  }
+}
+
+.ad-banner {
+  display: block;
+  margin-bottom: 0.8rem;
+}
+
+.question-page-link {
+  display: block;
+  margin: 0.5rem auto 0.2rem;
+}
+
+.footer-bar {
+  a {
+    height: 1.4rem;
+    padding: 0 0.45rem;
+    background: #5e7358;
+    font-size: 0.48rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    .iconfont {
+      display: block;
+      color: #fff;
+    }
+
+    span {
+      display: block;
+      color: #fff;
+    }
+  }
+}

@@ -1,13 +1,13 @@
 /* 文字截断 */
 
-.ui-nowrap {
+.ui-nowrap-one {
   max-width: 100%;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 
-.ui-nowrap-flex {
+.ui-nowrap-one-flex {
   display: -webkit-box;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -17,7 +17,7 @@
   height: inherit;
 }
 
-.ui-nowrap-multi {
+.ui-nowrap-two {
   display: -webkit-box;
   overflow: hidden;
   text-overflow: ellipsis;

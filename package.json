@@ -13,12 +13,16 @@
     "browser-sync": "^2.18.13",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^4.0.0",
+    "gulp-cache": "^1.0.2",
     "gulp-clean": "^0.4.0",
+    "gulp-concat": "^2.6.1",
     "gulp-copy2": "^0.2.0",
     "gulp-file-include": "^1.2.0",
+    "gulp-imagemin": "^4.1.0",
     "gulp-sass": "^3.1.0",
     "gulp-sequence": "^0.4.6",
     "gulp-sourcemaps": "^2.6.4",
+    "imagemin-pngquant": "^6.0.0",
     "markdown": "^0.5.0"
   }
 }
