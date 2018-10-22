@@ -164,7 +164,7 @@ gulp.task('copyJs-build', function () {
 });
 
 gulp.task('concatJs-build', function () {
-  return gulp.src(['./src/js/libs/zepto.js', '!./src/js/libs/zepto.js', './src/js/plugins/zepto/*.js'])
+  return gulp.src(['./src/js/libs/zepto.js', './src/js/plugins/zepto/*.js'])
     .pipe(concat('zepto.js'))
     .pipe(gulp.dest('./dist/build/js/libs'))
     .pipe(browserSyncReload({

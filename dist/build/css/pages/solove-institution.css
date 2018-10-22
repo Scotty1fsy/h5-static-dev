@@ -1,0 +1,17 @@
+.institution-recommend {
+  padding: 0.5rem 0.75rem 0.3rem; }
+  .institution-recommend header h3 {
+    font-size: 0.42rem;
+    font-weight: bold;
+    line-height: 0.58rem; }
+  .institution-recommend header h5 {
+    font-size: 0.22rem;
+    font-weight: 300; }
+  .institution-recommend p {
+    padding: 0.4rem 0;
+    font-size: 0.26rem;
+    line-height: 0.48rem; }
+    .institution-recommend p:last-child {
+      padding-bottom: 0; }
+
+/*# sourceMappingURL=../maps/pages/solove-institution.css.map */

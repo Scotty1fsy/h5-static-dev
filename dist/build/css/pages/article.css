@@ -1,0 +1,45 @@
+.article-wrap.article-info {
+  margin-bottom: 0; }
+  .article-wrap.article-info .title {
+    margin-bottom: 0; }
+
+.share-wrap {
+  margin: 0.2rem 0.45rem 0.4rem; }
+
+.article-wrap.article-recomment {
+  margin-top: 1rem; }
+  .article-wrap.article-recomment .title {
+    margin: 0 auto 0.48rem;
+    font-size: 0.42rem; }
+
+.article-wrap.article-related {
+  margin: 0.8rem auto 0.4rem; }
+  .article-wrap.article-related .title {
+    margin: 0 auto 0.48rem;
+    font-size: 0.42rem; }
+  .article-wrap.article-related .article-list ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap; }
+    .article-wrap.article-related .article-list ul li {
+      -webkit-box-flex: 1;
+      -ms-flex: 1;
+      flex: 1;
+      margin-bottom: 0.6rem; }
+      .article-wrap.article-related .article-list ul li:nth-child(2n) {
+        margin-left: 0.3rem; }
+      .article-wrap.article-related .article-list ul li a {
+        display: block; }
+        .article-wrap.article-related .article-list ul li a img {
+          width: 3.14rem;
+          height: 3.56rem; }
+        .article-wrap.article-related .article-list ul li a .tag {
+          margin: 0.2rem auto 0.16rem; }
+        .article-wrap.article-related .article-list ul li a h3 {
+          font-size: 0.26rem;
+          line-height: 0.32rem;
+          color: #383838; }
+
+/*# sourceMappingURL=../maps/pages/article.css.map */

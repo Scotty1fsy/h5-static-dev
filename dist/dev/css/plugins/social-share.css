@@ -61,9 +61,9 @@
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center; }
-    .social-share .wechat-qrcode-wrap .content h3 {
-      font-size: 0.48rem;
-      font-weight: 500; }
+    .social-share .wechat-qrcode-wrap .content .sule-logo {
+      width: 1.85rem;
+      margin-bottom: 0.25rem; }
     .social-share .wechat-qrcode-wrap .content h5 {
       font-size: 0.26rem;
       font-weight: 400; }

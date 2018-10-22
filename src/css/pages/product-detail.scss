@@ -70,55 +70,58 @@
 }
 
 .ad-article {
-  display: flex;
-  margin: 0 0.45rem 0.8rem;
-  padding: 0.35rem 0;
+  a {
+    display: flex;
+    margin: 0 0 0.8rem;
+    padding: 0.35rem 0.45rem;
 
-  img {
-    width: 2rem;
-    height: 2.26rem;
-  }
-
-  .article-info {
-    flex: 1;
-    padding-left: 0.4rem;
-
-    h3 {
-      padding: 0.05rem;
-      font-size: 0.3rem;
-      line-height: 0.4rem;
+    img {
+      width: 2rem;
+      height: 2.26rem;
     }
 
-    .detail {
-      margin: 0.1rem auto 0.2rem;
-      font-size: 0.22rem;
-      color: #666;
-    }
+    .article-info {
+      flex: 1;
+      padding-left: 0.4rem;
 
-    .arrow-right {
-      position: relative;
-      width: 0.66rem;
-      height: 0.06rem;
-      padding-right: 0.03rem;
-
-      &::before {
-        content: "";
-        position: absolute;
-        top: 0.02rem;
-        left: 0;
-        right: 0.03rem;
-        height: 0.01rem;
-        background: #383838;
+      h3 {
+        line-height: 0.4rem;
+        padding: 0.05rem;
+        font-size: 0.3rem;
+        color: #383838;
       }
 
-      &::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        border-left: 0.06rem solid #383838;
-        border-top: 0.03rem solid transparent;
-        border-bottom: 0.03rem solid transparent;
+      .detail {
+        margin: 0.1rem auto 0.2rem;
+        font-size: 0.22rem;
+        color: #666;
+      }
+
+      .arrow-right {
+        position: relative;
+        width: 0.66rem;
+        height: 0.07rem;
+        padding-right: 0.03rem;
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0.03rem;
+          left: 0;
+          right: 0.03rem;
+          height: 0.01rem;
+          background: #383838;
+        }
+
+        &::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          right: 0;
+          border-left: 0.07rem solid #383838;
+          border-top: 0.04rem solid transparent;
+          border-bottom: 0.04rem solid transparent;
+        }
       }
     }
   }
@@ -139,7 +142,6 @@
     height: 1.4rem;
     padding: 0 0.45rem;
     background: #5e7358;
-    font-size: 0.48rem;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -148,11 +150,14 @@
     .iconfont {
       display: block;
       color: #fff;
+      font-size: 0.5rem;
     }
 
     span {
       display: block;
       color: #fff;
+      font-size: 0.48rem;
+      font-weight: bold;
     }
   }
 }

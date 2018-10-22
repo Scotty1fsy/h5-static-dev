@@ -78,6 +78,18 @@ $(function () {
       })
     }();
 
+  $('.footer-bar a').removeClass('active');
+  $('.footer-bar a').each(function () {
+    var item = $(this);
+    if (item.attr('href') === location.pathname) {
+      item.addClass('active');
+    }
+  })
+
+  if (location.pathname === '/') {
+    $('.footer-bar a').eq(0).addClass('active');
+  }
+
   $('.container').finger('swipe', function (event) {
     showFooterBar(event.direction)
   })
@@ -91,7 +103,7 @@ $(function () {
     // image: '', // 图片, 默认取网页中第一个img标签
     sites: ['wechat', 'weibo'], // 启用的站点
     disabled: ['qq', 'qzone', 'google', 'facebook', 'twitter', 'douban', 'linkedin'], // 禁用的站点
-    wechatQrcodeContent: '<i class="iconfont icon-close hover-layer"></i><div class="content"><h3>SOLOVE</h3><h5>Modest&nbsp;&nbsp;|&nbsp;&nbsp;Design&nbsp;&nbsp;|&nbsp;&nbsp;Joy&nbsp;&nbsp;|&nbsp;&nbsp;Life</h5><img class="qrcode" src="../../image/qrcode.png" alt="素乐公众号二维码"></img><div class="scan-tips">扫一扫二维码关注我们:)</div></div>',
+    wechatQrcodeContent: '<i class="iconfont icon-close hover-layer"></i><div class="content"><image class="sule-logo" src="image/1-01.png" alt="SOLOVE"></iamge><h5>Modest&nbsp;&nbsp;|&nbsp;&nbsp;Design&nbsp;&nbsp;|&nbsp;&nbsp;Joy&nbsp;&nbsp;|&nbsp;&nbsp;Life</h5><img class="qrcode" src="image/qrcode.png" alt="素乐公众号二维码"></img><div class="scan-tips">扫一扫二维码关注我们:)</div></div>',
     initialized: true
   })
 

@@ -1,0 +1,81 @@
+.classify-wrap {
+  position: relative; }
+  .classify-wrap .current-classify {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    height: 0.86rem;
+    line-height: 0.86rem;
+    padding: 0 0.45rem;
+    font-size: 0.3rem; }
+    .classify-wrap .current-classify span {
+      display: block; }
+    .classify-wrap .current-classify .iconfont {
+      display: block; }
+  .classify-wrap ul {
+    display: none;
+    position: absolute;
+    top: 0.86rem;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background-color: #fff; }
+    .classify-wrap ul li {
+      height: 0.86rem;
+      line-height: 0.86rem;
+      padding: 0 0.45rem; }
+
+.products-wrap {
+  padding: 0.24rem 0.45rem; }
+  .products-wrap ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap; }
+    .products-wrap ul li {
+      width: 3.15rem;
+      padding: 0.24rem 0 0.12rem; }
+      .products-wrap ul li:nth-child(2n) {
+        margin-left: 0.3rem; }
+      .products-wrap ul li .product-info-link {
+        display: block; }
+        .products-wrap ul li .product-info-link img {
+          width: 3.15rem;
+          height: 3.15rem; }
+        .products-wrap ul li .product-info-link h3 {
+          margin: 0.3rem auto 0.15rem;
+          line-height: 0.36rem;
+          font-size: 0.3rem;
+          color: #383838; }
+        .products-wrap ul li .product-info-link div {
+          height: 0.6rem;
+          line-height: 0.3rem;
+          font-size: 0.24rem;
+          font-weight: 400;
+          color: #666; }
+      .products-wrap ul li .tmall-link {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        margin-top: 0.12rem;
+        padding: 0.02rem 0;
+        color: #5e7358; }
+        .products-wrap ul li .tmall-link .iconfont {
+          display: block;
+          margin-right: 0.1rem;
+          font-size: 0.32rem; }
+        .products-wrap ul li .tmall-link span {
+          display: block;
+          font-size: 0.22rem; }
+
+/*# sourceMappingURL=../maps/pages/products.css.map */

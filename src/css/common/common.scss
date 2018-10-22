@@ -83,9 +83,8 @@ li {
     background-color: #fff;
 
     .sule-logo {
-      margin: auto 0.45rem;
+      margin: 0.2rem 0.45rem;
       width: 1.66rem;
-      height: 0.31rem;
     }
 
     .menu-btn {
@@ -112,6 +111,7 @@ li {
     z-index: 1000;
     background-color: #fff;
     padding: 0.3rem 0;
+    overflow: auto;
 
     ul>li {
       a {
@@ -183,6 +183,7 @@ li {
   }
 
   a {
+    position: relative;
     display: block;
     display: flex;
     flex-direction: column;
@@ -191,21 +192,41 @@ li {
     text-align: center;
     flex: 1;
     height: 100%;
-    color: #383838;
 
     &:active,
     &:visited {
-      color: #383838;
+      color: #707070;
+    }
+
+    &.active {
+
+      .iconfont,
+      .page-name {
+        color: #383838;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 10;
+        height: 0.04rem;
+        background: #5E7358;
+      }
     }
 
     .iconfont {
       display: block;
       font-size: 0.5rem;
+      color: #707070;
     }
 
     .page-name {
       display: block;
       font-size: 0.22rem;
+      color: #707070;
     }
   }
 }
@@ -281,7 +302,7 @@ li {
     height: 0.35rem;
     line-height: 0.35rem;
     padding: 0 0.12rem;
-    font-size: 0.12rem;
+    font-size: 0.18rem;
     color: #758064;
 
     &::before {
@@ -421,7 +442,6 @@ li {
 
     .sule-logo {
       width: 1.66rem;
-      height: 0.31rem;
     }
 
     .company-info {

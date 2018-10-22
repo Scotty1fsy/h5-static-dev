@@ -169,8 +169,8 @@
 @font-face {
   font-family: 'iconfont';
   /* project id 809156 */
-  src: url("//at.alicdn.com/t/font_809156_0iqtudpk0ffe.eot");
-  src: url("//at.alicdn.com/t/font_809156_0iqtudpk0ffe.eot?#iefix") format("embedded-opentype"), url("//at.alicdn.com/t/font_809156_0iqtudpk0ffe.woff") format("woff"), url("//at.alicdn.com/t/font_809156_0iqtudpk0ffe.ttf") format("truetype"), url("//at.alicdn.com/t/font_809156_0iqtudpk0ffe.svg#iconfont") format("svg"); }
+  src: url("../../fonts/iconfont.eot");
+  src: url("../../fonts/iconfont.eot?#iefix") format("embedded-opentype"), url("../../fonts/iconfont.woff") format("woff"), url("../../fonts/iconfont.ttf") format("truetype"), url("../../fonts/iconfont.svg#iconfont") format("svg"); }
 
 .iconfont {
   font-family: "iconfont" !important;
@@ -301,6 +301,11 @@
         -webkit-box-sizing: border-box;
         border-radius: 6px;
         pointer-events: none; } }
+  .ui-btn-s:focus,
+  .ui-btn:focus,
+  .ui-btn-lg:focus,
+  .ui-btn-lg-nowhole:focus {
+    outline: none; }
   .ui-btn-s:not(.disabled):not(:disabled):active, .ui-btn-s.active,
   .ui-btn:not(.disabled):not(:disabled):active,
   .ui-btn.active,
@@ -531,9 +536,8 @@ li {
   justify-content: space-between;
   background-color: #fff; }
   .header-wrap .header-bar .sule-logo {
-    margin: auto 0.45rem;
-    width: 1.66rem;
-    height: 0.31rem; }
+    margin: 0.2rem 0.45rem;
+    width: 1.66rem; }
   .header-wrap .header-bar .menu-btn {
     width: 0.96rem;
     height: 1.08rem;
@@ -553,7 +557,8 @@ li {
   left: 0;
   z-index: 1000;
   background-color: #fff;
-  padding: 0.3rem 0; }
+  padding: 0.3rem 0;
+  overflow: auto; }
   .header-wrap .menu ul > li a {
     display: block;
     text-align: center;
@@ -622,6 +627,7 @@ li {
     transform: translateY(100%);
     opacity: 0; }
   .footer-bar a {
+    position: relative;
     display: block;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -640,16 +646,29 @@ li {
     -webkit-box-flex: 1;
     -ms-flex: 1;
     flex: 1;
-    height: 100%;
-    color: #383838; }
+    height: 100%; }
     .footer-bar a:active, .footer-bar a:visited {
+      color: #707070; }
+    .footer-bar a.active .iconfont,
+    .footer-bar a.active .page-name {
       color: #383838; }
+    .footer-bar a.active::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 10;
+      height: 0.04rem;
+      background: #5E7358; }
     .footer-bar a .iconfont {
       display: block;
-      font-size: 0.5rem; }
+      font-size: 0.5rem;
+      color: #707070; }
     .footer-bar a .page-name {
       display: block;
-      font-size: 0.22rem; }
+      font-size: 0.22rem;
+      color: #707070; }
 
 .swiper-container.swiper-container-horizontal .swiper-slide {
   font-size: 0; }
@@ -699,7 +718,7 @@ li {
     height: 0.35rem;
     line-height: 0.35rem;
     padding: 0 0.12rem;
-    font-size: 0.12rem;
+    font-size: 0.18rem;
     color: #758064; }
     .article-wrap .tag::before {
       border-color: #5e7358; }
@@ -799,8 +818,7 @@ li {
 .page-footer .footer-up {
   padding: 0.8rem 0.45rem 0; }
   .page-footer .footer-up .sule-logo {
-    width: 1.66rem;
-    height: 0.31rem; }
+    width: 1.66rem; }
   .page-footer .footer-up .company-info {
     margin: 0.36rem auto 0.5rem; }
     .page-footer .footer-up .company-info .info-item {

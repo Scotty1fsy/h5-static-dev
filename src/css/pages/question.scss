@@ -1,0 +1,41 @@
+.questions-wrap {
+  margin: 0.3rem auto 1.08rem;
+  padding: 0 0.45rem;
+
+  ul {
+    li {
+      .question {
+        height: 1.02rem;
+        line-height: 1.02rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        span {
+          font-size: 0.3rem;
+        }
+
+        .iconfont {}
+      }
+
+      .answer {
+        display: none;
+        padding: 0 0.42rem 0.48rem;
+        font-size: 0.26rem;
+        line-height: 0.36rem;
+      }
+
+      &.open {
+        .question {
+          .iconfont {
+            transform: rotate(-180deg);
+          }
+        }
+
+        .answer {
+          display: block;
+        }
+      }
+    }
+  }
+}

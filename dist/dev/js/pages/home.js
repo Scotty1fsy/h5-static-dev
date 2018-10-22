@@ -13,7 +13,7 @@ $(function () {
   var mySwiperRecomment = new Swiper('.swiper-container-recomment', {
     autoplay: true,
     freeMode: true,
-    freeModeMomentum: false,
+    freeModeSticky: true,
     slidesPerView: 'auto',
     spaceBetween: '5%',
     // 如果需要分页器-进度条指示器
