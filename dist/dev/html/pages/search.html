@@ -289,12 +289,56 @@
 </div>
 
 
+  <script id="search-result" type="text/html">
+    <% for(var i = 0; i < $data.length; i++){ %>
+      <% if ($data[i].type === 'article') { %>
+        <% for(var j = 0; j < $data[i].articles.length; j++){ %>
+          <div class="ad-article ui-border-b">
+            <a href="<%= $data[i].articles[j].url %>" class="hover-layer">
+              <img src="<%= $data[i].articles[j].img %>" alt="文章小图">
+              <div class="article-info">
+                <h3><%= $data[i].articles[j].title %></h3>
+                <div class="detail"><%= $data[i].articles[j].content %></div>
+                <div class="arrow-right"></div>
+              </div>
+            </a>
+          </div>
+        <% } %>
+        <% } else if ($data[i].type === 'product') { %>
+        <div class="products-list">
+          <ul>
+            <% for(var k = 0; k < $data[i].products.length; k++){ %>
+              <% if (k) { %>
+              <li class="ui-border-t">
+              <% } else { %>
+              <li>
+              <% } %>
+                <a href="<%= $data[i].products[k].url %>" class="product-detail-link hover-layer">
+                  <img src="<%= $data[i].products[k].img %>" alt="产品小图片">
+                  <div class="product-info-wrap">
+                    <h4><%= $data[i].products[k].title %></h4>
+                    <span><%= $data[i].products[k].content %></span>
+                  </div>
+                </a>
+                <a href="<%= $data[i].products[k].tmallUrl %>" class="tmall-link ui-border-l hover-layer">
+                  <i class="iconfont icon-buy"></i>
+                </a>
+              </li>
+            <% } %>
+          </ul>
+        </div>
+      <% } %>
+    <% } %>
+  </script>
+
   <script src="js/libs/zepto.js"></script>
 <script src="js/plugins/alloy-finger.js"></script>
 <script src="js/plugins/social-share.js"></script>
 <script src="js/common/utils.js"></script>
 <script src="js/common/common.js"></script>
- <script src="js/pages/search.js">
+ <script src="js/plugins/template-web.js">
+  </script>
+   <script src="js/pages/search.js">
   </script>
   
 

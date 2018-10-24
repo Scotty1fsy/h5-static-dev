@@ -5,8 +5,18 @@ $(function () {
     // ajax请求回掉操作
     var key = $(this).find('input').val();
     if (key) {
-      $('.search-init-wrap').fadeOut();
-      $('.search-result-wrap').fadeIn();
+      $.post('https://www.easy-mock.com/mock/5bcf2eb81b35885dcbeaaed1/solove/search/getDataByKey', {
+        key: key
+      }, function (response) {
+        // process response
+        if (response.code === 200) {
+          var html = template('search-result', response.data);
+          $('.search-result-wrap').html(html);
+
+          $('.search-init-wrap').fadeOut();
+          $('.search-result-wrap').fadeIn();
+        }
+      })
     } else {
       $('.search-init-wrap').fadeIn();
       $('.search-result-wrap').fadeOut();
