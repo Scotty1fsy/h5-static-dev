@@ -110,14 +110,14 @@ li {
     left: 0;
     z-index: 1000;
     background-color: #fff;
-    padding: 0.3rem 0;
+    padding: 0.1rem 0;
     overflow: auto;
 
     ul>li {
       a {
         display: block;
         text-align: center;
-        padding: 0.3rem;
+        padding: 0.1rem;
 
         &.search-link {
           position: relative;
@@ -299,8 +299,8 @@ li {
 
   .tag {
     display: inline-block;
-    height: 0.35rem;
-    line-height: 0.35rem;
+    height: 0.36rem;
+    line-height: 0.36rem;
     padding: 0 0.12rem;
     font-size: 0.18rem;
     color: #758064;

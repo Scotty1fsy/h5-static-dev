@@ -109,31 +109,33 @@
   display: block;
   margin: 0.5rem auto 0.2rem; }
 
-.footer-bar a {
-  height: 1.4rem;
-  padding: 0 0.45rem;
-  background: #5e7358;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between; }
-  .footer-bar a .iconfont {
-    display: block;
-    color: #fff;
-    font-size: 0.5rem; }
-  .footer-bar a span {
-    display: block;
-    color: #fff;
-    font-size: 0.48rem;
-    font-weight: bold; }
+.footer-bar {
+  height: 1.1rem; }
+  .footer-bar a {
+    height: 1.1rem;
+    padding: 0 0.45rem;
+    background: #5e7358;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between; }
+    .footer-bar a .iconfont {
+      display: block;
+      color: #fff;
+      font-size: 0.5rem; }
+    .footer-bar a span {
+      display: block;
+      color: #fff;
+      font-size: 0.4rem;
+      font-weight: bold; }
 
 /*# sourceMappingURL=../maps/pages/product-detail.css.map */
