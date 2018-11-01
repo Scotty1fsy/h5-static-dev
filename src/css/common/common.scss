@@ -110,20 +110,20 @@ li {
     left: 0;
     z-index: 1000;
     background-color: #fff;
-    padding: 0.1rem 0;
+    padding: 0.12rem 0;
     overflow: auto;
 
     ul>li {
       a {
         display: block;
         text-align: center;
-        padding: 0.1rem;
+        padding: 0.12rem;
 
         &.search-link {
           position: relative;
           height: 1.08rem;
           line-height: 1.08rem;
-          margin-top: 0.45rem;
+          margin-top: 0.16rem;
           display: flex;
           justify-content: center;
           align-items: center;
@@ -135,7 +135,7 @@ li {
 
             .iconfont {
               display: block;
-              font-size: 0.36rem;
+              font-size: 0.32rem;
               margin-right: 0.12rem;
             }
 
@@ -153,11 +153,11 @@ li {
       }
 
       .menu-text {
-        font-size: 0.36rem;
+        font-size: 0.32rem;
         color: #070202;
 
         &:first-child {
-          font-size: .36rem;
+          font-size: .32rem;
         }
       }
     }
@@ -203,6 +203,7 @@ li {
       .iconfont,
       .page-name {
         color: #383838;
+        font-weight: bold;
       }
 
       &::after {
@@ -344,17 +345,33 @@ li {
         }
 
         .product-info-wrap {
-          padding: 0.26rem;
-          line-height: 1;
+          padding: 0 0.26rem;
+          line-height: 1.75;
 
           h4 {
             font-size: 0.28rem;
             font-weight: 500;
-            margin-bottom: 0.1rem;
+            display: -webkit-box;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 1;
+            -webkit-box-flex: 1;
+            height: 0.36rem;
+            line-height: 0.36rem;
           }
 
           span {
             font-size: 0.22rem;
+            text-align: left;
+            display: -webkit-box;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            -webkit-box-flex: 2;
+            max-height: 0.64rem;
+            line-height: 0.32rem;
           }
         }
       }
@@ -391,7 +408,7 @@ li {
       display: block;
 
       img {
-        width: auto;
+        width: 5.4rem;
         height: 4.04rem;
       }
 
@@ -405,10 +422,19 @@ li {
           font-size: 0.42rem;
           font-weight: 400;
           margin-bottom: 0.04rem;
+          max-width: 100%;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
         }
 
         span {
+          display: block;
           font-size: 0.32rem;
+          max-width: 100%;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
         }
 
         i.iconfont {
