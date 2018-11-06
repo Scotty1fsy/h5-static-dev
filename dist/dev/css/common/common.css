@@ -800,7 +800,8 @@ li {
 .swiper-container-recomment .swiper-slide {
   width: auto !important; }
   .swiper-container-recomment .swiper-slide .product-detail-link {
-    display: block; }
+    display: block;
+    width: 5.4rem; }
     .swiper-container-recomment .swiper-slide .product-detail-link img {
       width: 5.4rem;
       height: 4.04rem; }
@@ -809,7 +810,8 @@ li {
       padding: 0.2rem 0.52rem 0.48rem 0;
       color: #383838; }
       .swiper-container-recomment .swiper-slide .product-detail-link .product-info h4 {
-        line-height: 1;
+        height: 0.48rem;
+        line-height: 0.48rem;
         font-size: 0.42rem;
         font-weight: 400;
         margin-bottom: 0.04rem;
@@ -819,6 +821,8 @@ li {
         text-overflow: ellipsis; }
       .swiper-container-recomment .swiper-slide .product-detail-link .product-info span {
         display: block;
+        height: 0.36rem;
+        line-height: 0.36rem;
         font-size: 0.32rem;
         max-width: 100%;
         overflow: hidden;

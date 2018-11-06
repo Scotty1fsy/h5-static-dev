@@ -203,7 +203,7 @@ li {
       .iconfont,
       .page-name {
         color: #383838;
-        font-weight: bold;
+        font-weight: 500;
       }
 
       &::after {
@@ -406,6 +406,7 @@ li {
 
     .product-detail-link {
       display: block;
+      width: 5.4rem;
 
       img {
         width: 5.4rem;
@@ -418,7 +419,8 @@ li {
         color: #383838;
 
         h4 {
-          line-height: 1;
+          height: 0.48rem;
+          line-height: 0.48rem;
           font-size: 0.42rem;
           font-weight: 400;
           margin-bottom: 0.04rem;
@@ -430,6 +432,8 @@ li {
 
         span {
           display: block;
+          height: 0.36rem;
+          line-height: 0.36rem;
           font-size: 0.32rem;
           max-width: 100%;
           overflow: hidden;

@@ -3,6 +3,13 @@
   .article-wrap.article-info .title {
     margin-bottom: 0; }
 
+.artice-content {
+  color: #383838;
+  line-height: 0.36rem; }
+  .artice-content p {
+    margin-top: 0.44rem;
+    padding: 0 0.45rem; }
+
 .share-wrap {
   margin: 0.2rem 0.45rem 0.4rem; }
 
